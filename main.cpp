@@ -7,14 +7,13 @@
 using namespace std;
 
 
-int findPeak(vector <vector<long int> > arr, int rows, int columns)
+int findPeak(vector <vector<long int> >arr, int rows, int columns)
 {
    int i =0;
    int k =0;
    vector<int> ivec;
    while(i< rows){
-        cout<<"a";
-       for(int j=0;j<columns;j++){
+       for( int j=0;j < columns;j++){
            if(i<rows-1 && arr[i][j]<arr[i+1][j]){
                 continue;
            }
@@ -32,7 +31,6 @@ int findPeak(vector <vector<long int> > arr, int rows, int columns)
            ivec.push_back(j+1);
            k++;
        }
-       cout<<"a";
        i++;
 
    }
@@ -70,12 +68,14 @@ int main(int argc,char* argv[])
 //        j++;
 //
 //    }
+int rows,cols;
+
+	    infile>>rows;
+	    infile>>cols;
+	    cout<<cols;
         string strLine;
 	    vector<vector<long int> > Data2D;
 	    getline(infile, strLine);
-	    int rows,cols;
-	    infile>>rows;
-	    infile>>cols;
 	    while (getline(infile, strLine))
 	    {
         stringstream ss(strLine);
@@ -87,9 +87,6 @@ int main(int argc,char* argv[])
 	        }
 	        Data2D.push_back(row);
 	    }
-
-cout <<  Data2D[49][2];
-
 
 //    int arr[11][1000] = {{ 38,80,24,26,28,18,79,55,26,84,24,90,92 },
 //                     { 34,88,63,59,23,22,67,59,44,76,28,97,99 },
@@ -103,8 +100,8 @@ cout <<  Data2D[49][2];
 //                     { 28,74,30,29,17,80,81,10,38,20,18,32,33 },
 //                     { 29,75,31,29,18,81,82,11,39,21,19,33,77 } };
 //
-//    //Number of Columns
-//    int rows = 11, columns = 13;
+//   //Number of Columns
+//   rows = 11, cols = 13;
     findPeak(Data2D, rows, cols);
     return 0;
 }
