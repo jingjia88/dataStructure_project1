@@ -7,7 +7,7 @@
 using namespace std;
 
 
-int findPeak(vector <vector<long int> >arr, int rows, int columns)
+void findPeak(vector <vector<long int> >arr, int rows, int columns)
 {
    int i =0;
    int k =0;
@@ -30,12 +30,13 @@ int findPeak(vector <vector<long int> >arr, int rows, int columns)
            ivec.push_back(i+1);
            ivec.push_back(j+1);
            k++;
+           j++;
        }
        i++;
 
    }
     cout<<k<<endl;
-    for(int n=0; n < ivec.size();n=n+2){
+    for(unsigned int n=0; n < ivec.size();n=n+2){
         cout << ivec[n] <<","<< ivec[n+1] << endl;
     }
 }
@@ -46,6 +47,7 @@ int main(int argc,char* argv[])
         cout<<"Input is wrong"<<endl;
         return 1;
     }
+
     string arg = ".\\"+string(argv[1])+"\\matrix.data";
     ifstream infile(arg.c_str());
 
@@ -72,7 +74,7 @@ int rows,cols;
 
 	    infile>>rows;
 	    infile>>cols;
-	    cout<<cols;
+
         string strLine;
 	    vector<vector<long int> > Data2D;
 	    getline(infile, strLine);
@@ -88,20 +90,6 @@ int rows,cols;
 	        Data2D.push_back(row);
 	    }
 
-//    int arr[11][1000] = {{ 38,80,24,26,28,18,79,55,26,84,24,90,92 },
-//                     { 34,88,63,59,23,22,67,59,44,76,28,97,99 },
-//                     { 28,98,28,58,70,69,52,20,29,28,38,40,41 },
-//                     { 48,27,29,37,88,83,46,83,74,27,18,21,34 },
-//                     { 92,48,42,40,28,58,33,94,28,29,42,72,78 },
-//                     { 10,90,24,27,11,24,17,72,65,46,28,49,77 },
-//                     { 56,38,29,13,10,22,20,34,54,19,29,87,88 },
-//                     { 65,34,12,10,28,13,10,58,42,28,14,64,68 },
-//                     { 18,48,27,27,20,48,72,59,28,10,19,10,29 },
-//                     { 28,74,30,29,17,80,81,10,38,20,18,32,33 },
-//                     { 29,75,31,29,18,81,82,11,39,21,19,33,77 } };
-//
-//   //Number of Columns
-//   rows = 11, cols = 13;
     findPeak(Data2D, rows, cols);
     return 0;
 }
