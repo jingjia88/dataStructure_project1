@@ -26,18 +26,22 @@ void findPeak(vector <vector<long int> >arr, int rows, int columns)
            if(j>0 && arr[i][j]<arr[i][j-1]){
                 continue;
            }
-
            ivec.push_back(i+1);
            ivec.push_back(j+1);
            k++;
-           j++;
        }
        i++;
 
    }
-    cout<<k<<endl;
+    fstream file;
+    file.open(".\\106072123\\final.peak", ios::out | ios::trunc);
+    if(!file){
+        cout << "Couldn't open file!\n";
+        return ;
+    }
+    file << k << "\n";
     for(unsigned int n=0; n < ivec.size();n=n+2){
-        cout << ivec[n] <<","<< ivec[n+1] << endl;
+        file << ivec[n] <<","<< ivec[n+1] << "\n";
     }
 }
 
@@ -70,7 +74,7 @@ int main(int argc,char* argv[])
 //        j++;
 //
 //    }
-int rows,cols;
+        int rows,cols;
 
 	    infile>>rows;
 	    infile>>cols;
@@ -89,7 +93,6 @@ int rows,cols;
 	        }
 	        Data2D.push_back(row);
 	    }
-
     findPeak(Data2D, rows, cols);
     return 0;
 }
