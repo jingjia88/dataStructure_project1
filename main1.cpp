@@ -34,14 +34,14 @@ void findPeak(vector <vector<long int> >arr, int rows, int columns,string argf)
    }
     fstream file;
     
-    file.open(".\\"+argf+"\\final2.peak", ios::out | ios::trunc);
+    file.open(".\\"+argf+"\\final.peak", ios::out | ios::trunc);
     if(!file){
         cout << "Couldn't open file!\n";
         return ;
     }
     file << k << "\n";
     for(unsigned int n=0; n < ivec.size();n=n+2){
-        file << ivec[n] <<","<< ivec[n+1] << "\n";
+        file << ivec[n] <<" "<< ivec[n+1] << "\n";
     }
 }
 

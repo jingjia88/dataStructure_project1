@@ -7,7 +7,7 @@
 using namespace std;
 
 
-void findPeak(vector <vector<long int> >arr, int rows, int columns)
+void findPeak(vector <vector<long int> >arr, int rows, int columns,string argf)
 {
    int i =0;
    int k =0;
@@ -31,17 +31,17 @@ void findPeak(vector <vector<long int> >arr, int rows, int columns)
            k++;
        }
        i++;
-
    }
     fstream file;
-    file.open(".\\106072123\\final.peak", ios::out | ios::trunc);
+    
+    file.open(".\\"+argf+"\\final.peak", ios::out | ios::trunc);
     if(!file){
         cout << "Couldn't open file!\n";
         return ;
     }
     file << k << "\n";
     for(unsigned int n=0; n < ivec.size();n=n+2){
-        file << ivec[n] <<","<< ivec[n+1] << "\n";
+        file << ivec[n] <<" "<< ivec[n+1] << "\n";
     }
 }
 
@@ -59,40 +59,27 @@ int main(int argc,char* argv[])
         cout<<"Something wrong"<<endl;
         return 1;
     }
-//    vector<vector<long int> > darr;
-//    vector<long int> arr;
-//    long int data;
-//    int j=0;
-//    while(infile >> data){
-//        cout<<data;
-//        if(j==cols-1){
-//            darr.push_back(arr);
-//            vector<long int> arr;
-//            j=0;
-//        }
-//        arr.push_back(data);
-//        j++;
-//
-//    }
-        int rows,cols;
-
-	    infile>>rows;
-	    infile>>cols;
-
-        string strLine;
-	    vector<vector<long int> > Data2D;
-	    getline(infile, strLine);
-	    while (getline(infile, strLine))
-	    {
+    int rows,cols;
+    infile>>rows;
+    infile>>cols;
+    long int data;
+    string strLine;
+    int j=0;
+    int i =0;
+    vector<vector<long int> > darr;
+    getline(infile, strLine);
+    while (getline(infile, strLine))
+    {
         stringstream ss(strLine);
-	        vector<long int> row;
-	        long int data;
-	        while (ss >> data)
-	        {
-	            row.push_back(data);
-	        }
-	        Data2D.push_back(row);
-	    }
-    findPeak(Data2D, rows, cols);
+        vector<long int> row;
+        long int data;
+        while (ss >> data)
+        {
+            row.push_back(data);
+        }
+        darr.push_back(row);
+    }
+    string argf =argv[1];
+    findPeak(darr, rows, cols, argf);
     return 0;
 }
