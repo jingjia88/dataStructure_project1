@@ -10,7 +10,6 @@ using namespace std;
 void findPeak(vector <vector<long int> >arr, int rows, int columns,string argf)
 {
    int i =0;
-   int k =0;
    vector<int> ivec;
    while(i< rows){
        for( int j=0;j < columns;j++){
@@ -28,7 +27,6 @@ void findPeak(vector <vector<long int> >arr, int rows, int columns,string argf)
            }
            ivec.push_back(i+1);
            ivec.push_back(j+1);
-           k++;
        }
        i++;
    }
@@ -39,7 +37,8 @@ void findPeak(vector <vector<long int> >arr, int rows, int columns,string argf)
         cout << "Couldn't open file!\n";
         return ;
     }
-    file << k << "\n";
+    int q = ivec.size()/2;
+    file << q << "\n";
     for(unsigned int n=0; n < ivec.size();n=n+2){
         file << ivec[n] <<" "<< ivec[n+1] << "\n";
     }
@@ -51,8 +50,8 @@ int main(int argc,char* argv[])
         cout<<"Input is wrong"<<endl;
         return 1;
     }
-
-    string arg = ".\\"+string(argv[1])+"\\matrix.data";
+    string argf =argv[1];
+    string arg = ".\\"+argf+"\\matrix.data";
     ifstream infile(arg.c_str());
 
     if(!infile){
@@ -78,8 +77,7 @@ int main(int argc,char* argv[])
             row.push_back(data);
         }
         darr.push_back(row);
-    }
-    string argf =argv[1];
+    } 
     findPeak(darr, rows, cols, argf);
     return 0;
 }
