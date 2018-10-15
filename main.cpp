@@ -31,7 +31,7 @@ void findPeak(vector <vector<long int> >arr, int rows, int columns,string argf)
        i++;
    }
     fstream file;
-    argf = ".\\"+argf+"\\matrix.data";
+    argf = ".\\"+argf+"\\final.peak";
     file.open(argf.c_str(), ios::out | ios::trunc);
     if(!file){
         cout << "Couldn't open file!\n";
